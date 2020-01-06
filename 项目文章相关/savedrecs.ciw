@@ -1,0 +1,29 @@
+FN Clarivate Analytics Web of Science
+VR 1.0
+PT P
+PN US2019386980-A1
+TI Method for performing single-sign-on for user device from desktop computer, involves receiving sign-in credentials including identity token, and providing token of user to website by browser to establish single-sign on user with website.
+   
+AU KLUDY T
+AE CITRIX SYSTEMS INC (CTRX-C)
+GA 2019A5968C
+AB    NOVELTY - The method involves receiving user sign-in credentials including an identity token of a user by a hosted desktop (730) through network connection with a user device. Activity on ports on a local host interface is monitored. Indication that a web browser on the hosted desktop being operated by the user is received by the hosted desktop to access a website (720). The identity token of the user is provided to the web browser in response to determining that one-time-use token is authentic. The identity token of the user is provided to the website by the web browser to establish a single-sign on the user with the website.
+   USE - Method for performing SSO for a user device from a desktop computer to an internet.
+   ADVANTAGE - The method enables mitigating risk for access to third party sites in which user passwords stored or managed externally so as to reduce password fatigue from the user to remain and use different user name and password combinations to access different software systems, time spent re-entering usernames and passwords for the same identity, and information technology (IT) cost.
+   DETAILED DESCRIPTION - An INDEPENDENT CLAIM is also included for a non-transitory computer-readable medium comprising a set of instructions for performing single-sign-on (SSO) for a user device from a desktop computer to an internet.
+   DESCRIPTION OF DRAWING(S) - The drawing shows a block diagram of network components used to achieve SSO for a user accessing a website through a host desktop web browser.
+   User s desktop (710)
+   Website (720)
+   Hosted desktop (730)
+   Local host interface (730d)
+   SSO coordinator/website authenticator (740)
+DC T01 (Digital Computers)
+MC T01-D01; T01-M06A3; T01-N02A3; T01-N02B1B; T01-N02B2A; T01-N03A1; T01-S03
+IP H04L-029/06; H04L-009/30
+PD US2019386980-A1   19 Dec 2019   H04L-029/06   201998   Pages: 19   English
+AD US2019386980-A1    US010580    18 Jun 2018
+PI US010580    18 Jun 2018
+UT DIIDW:2019A5968C
+ER
+
+EF
