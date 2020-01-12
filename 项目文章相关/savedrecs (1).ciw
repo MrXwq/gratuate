@@ -1,0 +1,26 @@
+FN Clarivate Analytics Web of Science
+VR 1.0
+PT P
+PN CN110532494-A
+TI Method for processing user personalized configuration for browser and server mode application for browser, involves sending configuration information to Vue constructor to initialize configuration information through browser driver.
+   
+AU JIN X
+AE SHENZHEN QIANHAI HUANRONG LIANYI INFORMA (SHEN-Non-standard)
+GA 2019A28554
+AB    NOVELTY - The method involves sending an HTTP request corresponding to account information to a server if the received account information is verified. Configuration information is received corresponding to the HTTP request sent by a server, where the configuration information includes a control name, a control center point coordinate, a control size, and function information. The configuration information is sent to a Vue constructor to initialize the configuration information through a browser driver of an initial page to obtain a page corresponding to the configuration information.
+   USE - Method for processing user personalized configuration for a browser and server mode application for a browser.
+   ADVANTAGE - The method enables obtaining account information of user login, and realizing the pertinence of pushing corresponding personalized page to a customer.
+   DETAILED DESCRIPTION - INDEPENDENT CLAIMS are also included for the following:
+   (1) a device for processing user personalized configuration for a browser and server mode application for a browser
+   (2) a computer-readable storage medium for storing a set of instructions to execute a method for processing user personalized configuration for a browser and server mode application for a browser.
+   DESCRIPTION OF DRAWING(S) - The drawing shows a flow diagram illustrating a method for processing user personalized configuration for a browser and server mode application for a browser. '(Drawing includes non-English language text)'
+DC T01 (Digital Computers)
+MC T01-J05B4P; T01-L02; T01-N01D3; T01-N03A1; T01-S03
+IP G06F-016/958; H04L-029/06; H04L-029/08
+PD CN110532494-A   03 Dec 2019   G06F-016/958   201997   Pages: 20   Chinese
+AD CN110532494-A    CN10810217    29 Aug 2019
+PI CN10810217    29 Aug 2019
+UT DIIDW:2019A28554
+ER
+
+EF
