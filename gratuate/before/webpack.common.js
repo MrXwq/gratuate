@@ -3,6 +3,7 @@
     CleanWebpackPlugin
   } = require('clean-webpack-plugin');
   const HtmlWebpackPlugin = require('html-webpack-plugin');
+  const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
   module.exports = {
     entry: './src/index.js',
@@ -12,22 +13,8 @@
     },
     module: {
       rules: [{
-          test: /\.css$/,
-          use: [
-            'style-loader',
-            'css-loader'
-          ]
-        },
-        {
-          test: /\.(png|svg|jpg|gif)$/,
-          use: [{
-              loader: 'file-loader',
-              options: {
-                limit: 8192,
-              }
-            }
-
-          ]
+          test: /\.vue$/,
+          loader: 'vue-loader'
         },
         {
           test: /\.js$/,
@@ -38,6 +25,32 @@
               presets: ['@babel/preset-env']
             }
           }
+        },
+        {
+          test: /\.css$/,
+          use: [
+            'vue-style-loader',
+            'css-loader'
+          ]
+        },
+        {
+          test: /\.(png|svg|jpg|gif)$/,
+          use: [{
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              publicPath: 'img/',
+              outputPath: 'img/'
+            }
+          }]
+        },
+        {
+          test: /\.scss$/,
+          use: [
+            'vue-style-loader',
+            'css-loader',
+            'sass-loader'
+          ]
         }
       ]
     },
@@ -45,7 +58,13 @@
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         title: 'My App',
-        template: './src/index.html' //使用自己的文件
-      })
+        template: './public/index.html' //使用自己的文件
+      }),
+      new VueLoaderPlugin()
     ],
+    // resolve: {
+    //   alias: {
+    //     'vue$': 'vue/dist/vue.esm.js' // 用 webpack 1 时需用 'vue/dist/vue.common.js'
+    //   }
+    // }
   };

@@ -1,22 +1,9 @@
-import _ from 'lodash';
-import './style.css';
-import Icon from './kanbudong.jpg';
+import Vue from "vue";
+import App from "./App.vue";
+import router from './router.js';
 
-function component() {
-  var element = document.createElement('div');
-  let app = document.getElementById('app')
-  app.innerHTML = '嗷嗷嗷熬奥'
-  // Lodash，现在由此脚本导入
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
-  element.classList.add('hello');
-
-  // 将图像添加到我们现有的 div。
-  let myIcon = new Image();
-  myIcon.src = Icon;
-
-  element.appendChild(myIcon);
-
-  return element;
-}
-
-document.body.appendChild(component());
+export const root = new Vue({
+  router,
+  render: h => h(App)
+});
+root.$mount("#app");
