@@ -1,4 +1,6 @@
   const path = require('path');
+  const resolve = dir => path.resolve(__dirname, dir);
+
   const {
     CleanWebpackPlugin
   } = require('clean-webpack-plugin');
@@ -12,7 +14,8 @@
       path: path.resolve(__dirname, 'dist')
     },
     module: {
-      rules: [{
+      rules: [
+        {
           test: /\.vue$/,
           loader: 'vue-loader'
         },
@@ -45,6 +48,12 @@
           }]
         },
         {
+          test: /\.(woff|woff2|eot|ttf|otf)$/,
+          use: [
+            'file-loader'
+          ]
+        },
+        {
           test: /\.scss$/,
           use: [
             'vue-style-loader',
@@ -62,9 +71,10 @@
       }),
       new VueLoaderPlugin()
     ],
-    // resolve: {
-    //   alias: {
-    //     'vue$': 'vue/dist/vue.esm.js' // 用 webpack 1 时需用 'vue/dist/vue.common.js'
-    //   }
-    // }
+    resolve: {
+      alias: {
+        'vue$': 'vue/dist/vue.esm.js',
+        '@': resolve('src'),
+      }
+    }
   };
