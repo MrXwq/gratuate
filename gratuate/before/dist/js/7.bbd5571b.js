@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[7],{66:function(e,n,t){"use strict";function i(){var e=this,n=e.$createElement;return(e._self._c||n)("div",[e._v("\n  订单\n")])}t.r(n),i._withStripped=!0;var r=t(5),s=Object(r.a)({},i,[],!1,null,null,null);s.options.__file="src/views/order.vue",n.default=s.exports}}]);
-//# sourceMappingURL=7.bbd5571b.js.map

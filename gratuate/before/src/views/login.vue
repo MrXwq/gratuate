@@ -19,8 +19,8 @@
     created() {},
     methods: {
       async login() {
-        const res = await this.$http.post('/user', this.model);
-        this.$router.push('/login');
+        const res = await this.$http.post('/web/user', this.model);
+        this.$router.push('/web/login');
         console.log(res);
       },
     },

@@ -33,7 +33,7 @@
         {
           test: /\.css$/,
           use: [
-            devMode ? MiniCssExtractPlugin.loader : 'vue-style-loader', //开发环境的热重载作用
+            devMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader, //开发环境的热重载作用
             'css-loader',
           ],
           sideEffects: true
@@ -41,7 +41,7 @@
         {
           test: /\.scss$/,
           use: [
-            devMode ? MiniCssExtractPlugin.loader : 'vue-style-loader', //开发环境的热重载作用
+            devMode ? 'vue-style-loader' : MiniCssExtractPlugin.loader, //开发环境的热重载作用
             'css-loader',
             'sass-loader'
           ],
@@ -69,6 +69,7 @@
     plugins: [
       new MiniCssExtractPlugin({
         filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
+        publicPath: '../'
       }),
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({

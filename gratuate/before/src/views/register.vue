@@ -45,7 +45,7 @@
           this.errType.inconsistent = true;
           return;
         }
-        let res = await this.$http.post("/user/register", this.model);
+        let res = await this.$http.post("/web/user/register", this.model);
         console.log(res)
 
         if (res) {
