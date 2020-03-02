@@ -4,3 +4,9 @@ export const TABBAR_TEXT = {
   ORDER: '订单列表',
   MY: '我的淘宝',
 };
+
+export const USER_TEXT = {
+  INCONSISTENT: "密码不一致！",
+  ACCOUNT_EMPTY: "账号不能为空！",
+  PASSWORK_EMPTY: "密码不能为空！",
+}

@@ -1,5 +1,5 @@
 import axios from 'axios';
-// import router from '@/router';
+import router from '@/router';
 
 const http = axios.create({
   baseURL: 'http://localhost:3000',
@@ -13,17 +13,14 @@ const http = axios.create({
 //   return Promise.reject(error)
 // })
 
-// http.interceptors.response.use(res => {
-//   return res
-// }, error => {
-//   if(error.response.data.message) {
-//     Vue.prototype.$message({
-//       type: 'error',
-//       message: err.response.data.message
-//     })
-//   }
-//   if(error.response.status === 401) {
-//     router.push('/login')
-//   }
-// })
+http.interceptors.response.use(res => {
+  return res
+}, error => {
+  if(error.response.data.message) {
+    console.log(error.response.data.message)
+  }
+  if(error.response.status === 401) {
+    router.push('/login')
+  }
+})
 export default http;

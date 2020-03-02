@@ -5,17 +5,18 @@
     CleanWebpackPlugin
   } = require('clean-webpack-plugin');
   const HtmlWebpackPlugin = require('html-webpack-plugin');
-  const VueLoaderPlugin = require('vue-loader/lib/plugin')
+  const VueLoaderPlugin = require('vue-loader/lib/plugin');
+  const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+  const devMode = process.env.NODE_ENV !== 'production';
 
   module.exports = {
     entry: './src/index.js',
     output: {
-      filename: 'bundle.js',
+      filename: 'js/[name].[hash:8].js',
       path: path.resolve(__dirname, 'dist')
     },
     module: {
-      rules: [
-        {
+      rules: [{
           test: /\.vue$/,
           loader: 'vue-loader'
         },
@@ -32,9 +33,19 @@
         {
           test: /\.css$/,
           use: [
-            'vue-style-loader',
-            'css-loader'
-          ]
+            devMode ? MiniCssExtractPlugin.loader : 'vue-style-loader', //开发环境的热重载作用
+            'css-loader',
+          ],
+          sideEffects: true
+        },
+        {
+          test: /\.scss$/,
+          use: [
+            devMode ? MiniCssExtractPlugin.loader : 'vue-style-loader', //开发环境的热重载作用
+            'css-loader',
+            'sass-loader'
+          ],
+          sideEffects: true
         },
         {
           test: /\.(png|svg|jpg|gif)$/,
@@ -49,21 +60,16 @@
         },
         {
           test: /\.(woff|woff2|eot|ttf|otf)$/,
-          use: [
-            'file-loader'
-          ]
+          use: [{
+            loader: 'url-loader',
+          }]
         },
-        {
-          test: /\.scss$/,
-          use: [
-            'vue-style-loader',
-            'css-loader',
-            'sass-loader'
-          ]
-        }
       ]
     },
     plugins: [
+      new MiniCssExtractPlugin({
+        filename: devMode ? 'css/[name].css' : 'css/[name].[hash].css',
+      }),
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
         title: 'My App',

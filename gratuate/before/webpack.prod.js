@@ -8,7 +8,7 @@ module.exports = merge(common, {
   devtool: 'source-map',
   plugins: [
     new UglifyJSPlugin({
-      sourceMap: true
+      sourceMap: true//使用sourceMap将错误消息位置映射到模块(这会减慢编译速度)
     }),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')

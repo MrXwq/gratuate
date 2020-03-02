@@ -4,6 +4,7 @@ import http from '@/utils/http'
 Vue.prototype.$http = http
 
 const login = () => import('./views/login.vue')
+const register = () => import('./views/register.vue')
 const layout = () => import('./layout/index.vue')
 const home = () => import('./views/home.vue')
 const cart = () => import('./views/cart.vue')
@@ -18,6 +19,11 @@ const router =  new VueRouter({
       path: '/login',
       name: 'login',
       component: login
+    },
+    {
+      path: '/register',
+      name: 'register',
+      component: register
     },
     {
       path: '/',
