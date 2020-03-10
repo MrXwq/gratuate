@@ -13,7 +13,7 @@
     entry: './src/index.js',
     output: {
       filename: 'js/[name].[hash:8].js',
-      path: path.resolve(__dirname, 'dist')
+      path: path.resolve(__dirname, '../serve/before')
     },
     module: {
       rules: [{
