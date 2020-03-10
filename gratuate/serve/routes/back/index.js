@@ -1,4 +1,4 @@
 module.exports = (app) => {
   let user = require('./user')
-  app.use('/admin/user', user)
+  app.use('/back/user', user)
 }
