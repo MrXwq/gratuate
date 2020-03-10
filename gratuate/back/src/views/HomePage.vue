@@ -58,6 +58,9 @@
       </el-aside>
 
       <el-container>
+        <div>
+            <span v-for="(item, index) in users" :key="index">{{item.username}}</span>
+          </div>
         <el-header style="text-align: right; font-size: 12px">
           <el-dropdown>
             <i class="el-icon-setting" style="margin-right: 15px"></i>
@@ -94,8 +97,18 @@ export default {
       address: "上海市普陀区金沙江路 1518 弄"
     };
     return {
-      tableData: Array(20).fill(item)
+      tableData: Array(20).fill(item),
+      users: []
     };
+  },
+  created() {
+    this.getUsers()
+  },
+  methods: {
+    async getUsers() {
+      const res = await this.$http.get('user/users')
+      this.users = res.data
+    }
   }
 };
 </script>
