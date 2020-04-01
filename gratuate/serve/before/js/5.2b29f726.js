@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[5],{83:function(e,n,t){"use strict";function i(){var e=this,n=e.$createElement;return(e._self._c||n)("div",[e._v("\n  购物车\n")])}t.r(n),i._withStripped=!0;var r=t(5),s=Object(r.a)({},i,[],!1,null,null,null);s.options.__file="src/views/cart.vue",n.default=s.exports}}]);
-//# sourceMappingURL=5.2b29f726.js.map
