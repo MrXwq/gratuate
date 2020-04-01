@@ -2,7 +2,7 @@ import axios from 'axios';
 import router from '@/router';
 
 const http = axios.create({
-  baseURL: process.env.URL || 'http://localhost:3000/web',
+  baseURL: process.env.VUE_APP_API_URL || '/web',
 });
 // http.interceptors.request.use((config) => {
 //   if(localStorage.token) {
