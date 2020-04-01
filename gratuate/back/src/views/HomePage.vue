@@ -107,6 +107,7 @@ export default {
   methods: {
     async getUsers() {
       const res = await this.$http.get('user/users')
+      // console.log(res)
       this.users = res.data
     }
   }
