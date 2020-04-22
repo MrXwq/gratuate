@@ -10,6 +10,13 @@
         "useESModules": false,
         "version": "7.0.0-beta.0"
       }
+    ],
+    [
+      "import",
+      {
+        "libraryName": "vant",
+        "style": true
+      }
     ]
   ]
 }

@@ -18,8 +18,8 @@
   </div>
 </template>
 <script>
-  import HomeCenter from '@/components/special/home/HomeCenter.vue';
-  import HomeFooter from '@/components/special/home/HomeFooter.vue';
+  import HomeCenter from '@/components/special/HomeCenter/index.vue';
+  import HomeFooter from '@/components/special/HomeFooter/index.vue';
 
   export default {
     data() {

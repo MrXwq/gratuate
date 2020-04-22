@@ -6,25 +6,137 @@
   "description": "毕业设计使用",
   "glyphs": [
     {
-      "icon_id": "1305",
-      "name": "购物车满",
-      "font_class": "gouwucheman",
-      "unicode": "e602",
-      "unicode_decimal": 58882
+      "icon_id": "8064161",
+      "name": "返回",
+      "font_class": "fanhui",
+      "unicode": "e63d",
+      "unicode_decimal": 58941
     },
     {
-      "icon_id": "565981",
-      "name": "订单",
-      "font_class": "dingdan1",
-      "unicode": "e63b",
-      "unicode_decimal": 58939
+      "icon_id": "14221947",
+      "name": "图片",
+      "font_class": "tupian",
+      "unicode": "e68d",
+      "unicode_decimal": 59021
     },
     {
-      "icon_id": "579829",
-      "name": "个人",
-      "font_class": "geren1",
-      "unicode": "e62f",
-      "unicode_decimal": 58927
+      "icon_id": "6318183",
+      "name": "对",
+      "font_class": "dui",
+      "unicode": "e60d",
+      "unicode_decimal": 58893
+    },
+    {
+      "icon_id": "2315101",
+      "name": "喇叭",
+      "font_class": "laba",
+      "unicode": "e60b",
+      "unicode_decimal": 58891
+    },
+    {
+      "icon_id": "4113494",
+      "name": "推荐",
+      "font_class": "tuijian-copy-copy",
+      "unicode": "e601",
+      "unicode_decimal": 58881
+    },
+    {
+      "icon_id": "9367926",
+      "name": "版权",
+      "font_class": "banquan",
+      "unicode": "e604",
+      "unicode_decimal": 58884
+    },
+    {
+      "icon_id": "5027",
+      "name": "手机",
+      "font_class": "shouji",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "421276",
+      "name": "电脑",
+      "font_class": "diannao",
+      "unicode": "e623",
+      "unicode_decimal": 58915
+    },
+    {
+      "icon_id": "460085",
+      "name": "女装",
+      "font_class": "nvzhuang",
+      "unicode": "e63c",
+      "unicode_decimal": 58940
+    },
+    {
+      "icon_id": "893418",
+      "name": "食品",
+      "font_class": "shipin",
+      "unicode": "e661",
+      "unicode_decimal": 58977
+    },
+    {
+      "icon_id": "2303500",
+      "name": "饰品",
+      "font_class": "shipin1",
+      "unicode": "e61e",
+      "unicode_decimal": 58910
+    },
+    {
+      "icon_id": "2494372",
+      "name": "杠铃高拉 健身",
+      "font_class": "ganglinggaolajianshen",
+      "unicode": "e603",
+      "unicode_decimal": 58883
+    },
+    {
+      "icon_id": "3351522",
+      "name": "美妆",
+      "font_class": "meizhuang",
+      "unicode": "e60a",
+      "unicode_decimal": 58890
+    },
+    {
+      "icon_id": "4339311",
+      "name": "洗护",
+      "font_class": "xihu",
+      "unicode": "e7d5",
+      "unicode_decimal": 59349
+    },
+    {
+      "icon_id": "5299014",
+      "name": "鞋子",
+      "font_class": "xiezi",
+      "unicode": "e624",
+      "unicode_decimal": 58916
+    },
+    {
+      "icon_id": "7721232",
+      "name": "生鲜",
+      "font_class": "shengxian",
+      "unicode": "e738",
+      "unicode_decimal": 59192
+    },
+    {
+      "icon_id": "8144776",
+      "name": "男装",
+      "font_class": "nanzhuang",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    },
+    {
+      "icon_id": "10977414",
+      "name": "医药",
+      "font_class": "yiyao",
+      "unicode": "e689",
+      "unicode_decimal": 59017
+    },
+    {
+      "icon_id": "6308120",
+      "name": "购物车",
+      "font_class": "gouwuche",
+      "unicode": "e690",
+      "unicode_decimal": 59024
     },
     {
       "icon_id": "749943",
@@ -41,18 +153,11 @@
       "unicode_decimal": 59069
     },
     {
-      "icon_id": "1367310",
-      "name": "查找",
-      "font_class": "chazhao",
-      "unicode": "e609",
-      "unicode_decimal": 58889
-    },
-    {
-      "icon_id": "6308120",
-      "name": "购物车",
-      "font_class": "gouwuche",
-      "unicode": "e690",
-      "unicode_decimal": 59024
+      "icon_id": "579829",
+      "name": "个人",
+      "font_class": "geren1",
+      "unicode": "e62f",
+      "unicode_decimal": 58927
     },
     {
       "icon_id": "7720072",
@@ -62,11 +167,32 @@
       "unicode_decimal": 58903
     },
     {
+      "icon_id": "1305",
+      "name": "购物车满",
+      "font_class": "gouwucheman",
+      "unicode": "e602",
+      "unicode_decimal": 58882
+    },
+    {
+      "icon_id": "565981",
+      "name": "订单",
+      "font_class": "dingdan1",
+      "unicode": "e63b",
+      "unicode_decimal": 58939
+    },
+    {
       "icon_id": "8619735",
       "name": "实景酷后台-首页",
       "font_class": "shouye",
       "unicode": "e61c",
       "unicode_decimal": 58908
+    },
+    {
+      "icon_id": "1367310",
+      "name": "查找",
+      "font_class": "chazhao",
+      "unicode": "e609",
+      "unicode_decimal": 58889
     }
   ]
 }
