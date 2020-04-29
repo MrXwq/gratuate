@@ -189,4 +189,8 @@ let's encrypt这个网站https://letsencrypt.org/
 1. get started
 2. certbot
 3. ![image-20200403131016261](../typora/Typora/imgs/image-20200403131016261.png)
-4. 
+
+```js
+没有npm i bcrypt -S//导致 UnhandledPromiseRejectionWarning: ValidationError: User valiword"
+```
+
