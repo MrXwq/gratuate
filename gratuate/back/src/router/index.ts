@@ -10,7 +10,40 @@ const routes = [
   {
     path: '/',
     name: 'HomePage',
-    component: HomePage
+    component: HomePage,
+    children: [
+      {
+        path: '/commodity/create',
+        name: 'CommodityCreate',
+        component: () => import("@/components/special/menu/CommodityCreate.vue")
+      },
+      {
+        path: '/commodity/create/:id',
+        name: 'CommodityCreate',
+        component: () => import("@/components/special/menu/CommodityCreate.vue")
+      },
+      {
+        path: '/commodity/list',
+        name: 'CommodityList',
+        component: () => import("@/components/special/menu/CommodityList.vue")
+      },
+      {
+        path: '/categories/create',
+        name: 'CategoriesCreate',
+        component: () => import("@/components/special/menu/CategoriesCreate.vue")
+      },
+      {
+        path: '/categories/create/:id',
+        name: 'CategoriesCreate',
+        component: () => import("@/components/special/menu/CategoriesCreate.vue"),
+        props: true
+      },
+      {
+        path: '/categories/list',
+        name: 'CategoriesList',
+        component: () => import("@/components/special/menu/CategoriesList.vue")
+      }
+    ]
   },
   {
     path: '/about',
