@@ -12,7 +12,6 @@ router.post('/register', async (req, res) => {
     })
   } else {
     let user = await AdminUser.create(req.body)
-    console.log(user)
     res.send(user)
   }
 })

@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[12],{250:function(e,n,t){"use strict";function i(){var e=this,n=e.$createElement;return(e._self._c||n)("div",[e._v("\n  寻找宝贝\n")])}t.r(n),i._withStripped=!0;var s=t(9),r=Object(s.a)({},i,[],!1,null,null,null);r.options.__file="src/views/search.vue",n.default=r.exports}}]);
-//# sourceMappingURL=12.8c849d11.js.map
