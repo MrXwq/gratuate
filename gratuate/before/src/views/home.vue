@@ -68,6 +68,9 @@
           background-color: rgb(255, 78, 34);
           text-align: center;
           border-radius: .04rem;
+          .iconchazhao {
+            font-size: .15rem;
+          }
         }
       }
     }

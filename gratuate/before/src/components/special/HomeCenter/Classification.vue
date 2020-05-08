@@ -1,15 +1,23 @@
 <template>
   <div class="classification-box">
     <div class="classification-container">
-      <div class="vertical" v-for="(item, index) in iconfontArr" :key="index">
-        <div class="vertical-top">
-          <i class="iconfont iconfont-top" :class="item.top"></i>
-          <span>{{item.topText}}</span>
+      <div class="vertical" v-for="(item, index) in category" :key="index">
+        <div
+          @click="goConmodityList(item._id)"
+          class="vertical-top"
+          :class="[ index % 2 != 0 ? 'vertical-bottom' : '']"
+          v-if="item.icon"
+        >
+          <i
+            class="iconfont iconfont-top"
+            :class="[ index % 2 == 0 ? 'iconfont-bottom' : '',item.icon]"
+          ></i>
+          <span>{{ item.name}}</span>
         </div>
-        <div class="vertical-bottom">
-          <i class="iconfont iconfont-bottom" :class="item.bottom"></i>
-          <span>{{item.bottomText}}</span>
-        </div>
+        <!-- <div class="vertical-bottom">
+          <i class="iconfont iconfont-bottom" :class=" item.icon"></i>
+          <span>{{ item.name}}</span>
+        </div>-->
       </div>
     </div>
   </div>
@@ -55,8 +63,24 @@ export default {
           bottom: "iconshengxian",
           bottomText: "生鲜"
         }
-      ]
+      ],
+      category: []
     };
+  },
+  created() {
+    this.getClassification();
+  },
+  methods: {
+    async getClassification() {
+      const res = await this.$http.get("/api/category");
+      this.category = res.data;
+      // console.log(res.data)
+    },
+    goConmodityList(id) {
+      this.$router.push({
+        path: `/commoditylist/${id}`
+      });
+    }
   }
 };
 </script>
@@ -64,7 +88,9 @@ export default {
 .classification-box {
   .classification-container {
     display: flex;
-    padding-top: .1rem;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding-top: 0.1rem;
     width: 100%;
     height: 1.5rem;
     box-sizing: border-box;
@@ -85,12 +111,12 @@ export default {
         display: flex;
         flex-direction: column;
         width: 0.4rem;
-      }
-      .vertical-bottom {
-        display: flex;
-        flex-direction: column;
-        margin-top: 0.3rem;
-        width: 0.4rem;
+        &.vertical-bottom {
+          display: flex;
+          flex-direction: column;
+          margin-top: 0.3rem;
+          width: 0.4rem;
+        }
       }
     }
   }

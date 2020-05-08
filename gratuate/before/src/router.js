@@ -13,6 +13,7 @@ const my = () => import('@/views/my.vue')
 const search = () => import('@/views/search.vue')
 const commoditydetail = () => import('@/views/commoditydetail.vue')
 const feedback = () => import('@/views/feedback.vue')
+const commoditylist = () => import('@/views/commoditylist.vue')
 
 Vue.use(VueRouter)
 
@@ -67,12 +68,17 @@ const router =  new VueRouter({
       path: '/feedback',
       name: 'feedback',
       component: feedback
-    }
+    },
+    {
+      path: '/commoditylist/:id',
+      name: 'commoditylist',
+      component: commoditylist
+    },
   ]
 })
 
 router.beforeEach((to, from, next) => {
-  if(to.meta.isPrivate) {
+  if(!localStorage.token && to.meta.isPrivate) {
     return next('/login')
   }
   next()

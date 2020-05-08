@@ -8,52 +8,57 @@
       <span class="err-class" v-if="errType.passwordEmpty">{{USER_TEXT.PASSWORK_EMPTY}}</span>
       <input type="password" placeholder="再次确认你的密码" v-model="model.confirmPassword" class="txt" />
       <span class="err-class" v-if="errType.inconsistent">{{USER_TEXT.INCONSISTENT}}</span>
-      <input type="submit" @click="register" value="注册" class="register-btn" />
+      <van-button type="info" @click="register" round >注册</van-button>
+      <!-- <input type="submit" @click="register" value="注册" class="register-btn" /> -->
     </form>
   </div>
 </template>
 <script>
-  import { USER_TEXT } from "@/constants/TEXT.js";
-  export default {
-    data() {
-      return {
-        USER_TEXT,
-        errType: {
-          accountEmpty: false,
-          passwordEmpty: false,
-          inconsistent: false
-        },
-        model: {
-          username: "",
-          password: "",
-          confirmPassword: ""
-        }
-      };
-    },
-    created() {},
-    methods: {
-      async register() {
-        if (!this.model.username) {
-          this.errType.accountEmpty = true;
-          return;
-        }
-        if (!this.model.password) {
-          this.errType.passwordEmpty = true;
-          return;
-        }
-        if (!this.model.confirmPassword) {
-          this.errType.inconsistent = true;
-          return;
-        }
-        let res = await this.$http.post("/user/register", this.model);
-        console.log(res)
+import { Button } from "vant";
+import { USER_TEXT } from "@/constants/TEXT.js";
+export default {
+  data() {
+    return {
+      USER_TEXT,
+      errType: {
+        accountEmpty: false,
+        passwordEmpty: false,
+        inconsistent: false
+      },
+      model: {
+        username: "",
+        password: "",
+        confirmPassword: ""
+      }
+    };
+  },
+  created() {},
+  methods: {
+    async register() {
+      if (!this.model.username) {
+        this.errType.accountEmpty = true;
+        return;
+      }
+      if (!this.model.password) {
+        this.errType.passwordEmpty = true;
+        return;
+      }
+      if (!this.model.confirmPassword) {
+        this.errType.inconsistent = true;
+        return;
+      }
+      let res = await this.$http.post("/user/register", this.model);
+      console.log(res);
 
-        if (res) {
-          this.$router.push("/login");
-        }
+      if (res) {
+        this.$router.push("/login");
       }
     }
-  };
+  },
+  components: {
+    [Button.name]: Button
+  }
+};
 </script>
 <style lang="scss" scoped>
 .register-box {
@@ -63,7 +68,7 @@
   height: 100%;
   width: 100%;
   // background: rgba($color: #000000, $alpha: 0.8);
-  background-image: url('~@/assets/img/wolf.jpg');
+  background-image: url("~@/assets/img/wolf.jpg");
   background-repeat: no-repeat;
   background-size: auto 100%;
 
@@ -95,16 +100,26 @@
       background: rgba(255, 255, 255, 0.5);
       border-radius: 0.06rem;
     }
-    .register-btn {
-      width: 60%;
-      margin-top: 0.5rem;
-      background: #3b71f0;
-      color: white;
-      border-radius: 0.5rem;
-    }
+    // .register-btn {
+    //   width: 60%;
+    //   margin-top: 0.5rem;
+    //   background: #3b71f0;
+    //   color: white;
+    //   border-radius: 0.5rem;
+    // }
     .err-class {
       color: red;
     }
+  }
+  .van-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 0.5rem;
+    height: .4rem;
+    width: 2rem;
+    box-sizing: border-box;
+    font-size: .2rem;
   }
 }
 </style>

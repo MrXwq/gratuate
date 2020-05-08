@@ -7,19 +7,19 @@
       </div>
       <div
         class="recommend-item"
-        v-for="(item, index) in recommends"
+        v-for="(item, index) in commodity"
         :key="index"
-        @click="goCommodityDetail(item.id)"
+        @click="goCommodityDetail(item._id)"
       >
         <div>
-          <img class="recommend-img" :src="item.imgUrl" alt="商品图片" />
+          <img class="recommend-img" :src="item.listImg" alt="商品图片" />
         </div>
         <div class="recommend-text">
           <div class="recommend-title">{{item.title}}</div>
           <div class="recommend-price-box">
             <span class="recommend-sign">￥</span>
             <span class="recommend-price">{{item.price}}</span>
-            <span class="recommend-payed">{{item.hasPurchased}}人已购买</span>
+            <span class="recommend-payed">{{item.sales}}人已购买</span>
           </div>
         </div>
       </div>
@@ -31,43 +31,51 @@ import { COMMODITYDETAIL } from "@/constants/URL.js";
 export default {
   data() {
     return {
-      recommends: [
-        {
-          id: 1,
-          imgUrl:
-            "http://gw.alicdn.com/bao/uploaded/i1/2675669696/O1CN01YKLlof2LUopbI1RmM_!!2675669696.jpg_500x500q90.jpg_.webp",
-          title: "简约现代床头柜北欧汉尼斯储物柜小户型迷你床边柜卧室家具两斗柜",
-          price: 399,
-          hasPurchased: 1
-        },
-        {
-          id: 2,
-          imgUrl:
-            "http://gw.alicdn.com/bao/uploaded/i1/2675669696/O1CN01YKLlof2LUopbI1RmM_!!2675669696.jpg_500x500q90.jpg_.webp",
-          title: "简约现代床头柜北欧汉尼斯储物柜小户型迷你床边柜卧室家具两斗柜",
-          price: 399,
-          hasPurchase: 1
-        },
-        {
-          id: 3,
-          imgUrl:
-            "http://gw.alicdn.com/bao/uploaded/i1/2675669696/O1CN01YKLlof2LUopbI1RmM_!!2675669696.jpg_500x500q90.jpg_.webp",
-          title: "简约现代床头柜北欧汉尼斯储物柜小户型迷你床边柜卧室家具两斗柜",
-          price: 399,
-          hasPurchase: 1
-        },
-        {
-          id: 4,
-          imgUrl:
-            "http://gw.alicdn.com/bao/uploaded/i1/2675669696/O1CN01YKLlof2LUopbI1RmM_!!2675669696.jpg_500x500q90.jpg_.webp",
-          title: "简约现代床头柜北欧汉尼斯储物柜小户型迷你床边柜卧室家具两斗柜",
-          price: 399,
-          hasPurchase: 1
-        }
-      ]
+      // recommends: [
+      //   {
+      //     id: 1,
+      //     imgUrl:
+      //       "http://gw.alicdn.com/bao/uploaded/i1/2675669696/O1CN01YKLlof2LUopbI1RmM_!!2675669696.jpg_500x500q90.jpg_.webp",
+      //     title: "简约现代床头柜北欧汉尼斯储物柜小户型迷你床边柜卧室家具两斗柜",
+      //     price: 399,
+      //     hasPurchased: 1
+      //   },
+      //   {
+      //     id: 2,
+      //     imgUrl:
+      //       "http://gw.alicdn.com/bao/uploaded/i1/2675669696/O1CN01YKLlof2LUopbI1RmM_!!2675669696.jpg_500x500q90.jpg_.webp",
+      //     title: "简约现代床头柜北欧汉尼斯储物柜小户型迷你床边柜卧室家具两斗柜",
+      //     price: 399,
+      //     hasPurchase: 1
+      //   },
+      //   {
+      //     id: 3,
+      //     imgUrl:
+      //       "http://gw.alicdn.com/bao/uploaded/i1/2675669696/O1CN01YKLlof2LUopbI1RmM_!!2675669696.jpg_500x500q90.jpg_.webp",
+      //     title: "简约现代床头柜北欧汉尼斯储物柜小户型迷你床边柜卧室家具两斗柜",
+      //     price: 399,
+      //     hasPurchase: 1
+      //   },
+      //   {
+      //     id: 4,
+      //     imgUrl:
+      //       "http://gw.alicdn.com/bao/uploaded/i1/2675669696/O1CN01YKLlof2LUopbI1RmM_!!2675669696.jpg_500x500q90.jpg_.webp",
+      //     title: "简约现代床头柜北欧汉尼斯储物柜小户型迷你床边柜卧室家具两斗柜",
+      //     price: 399,
+      //     hasPurchase: 1
+      //   }
+      // ],
+      commodity: []
     };
   },
+  created() {
+    this.getCommoditylist(this.id);
+  },
   methods: {
+    async getCommoditylist(type) {
+      let res = await this.$http.get(`/api/commoditylist`);
+      this.commodity = res.data;
+    },
     goCommodityDetail(id) {
       this.$router.push({
         path: COMMODITYDETAIL,

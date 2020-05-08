@@ -3,6 +3,7 @@
     <router-view></router-view>
     <div class="layout-tabbar">
       <router-link
+        tag="div"
         v-for="(item,index) in tabbar"
         :key="index"
         :to="item.path"
@@ -63,9 +64,7 @@
       },
       // 切换图标
       selectTabbar(val) {
-        console.log(val);
         this.nowConstant = val;
-        console.log(this.nowConstant);
       },
     },
   };
@@ -88,5 +87,8 @@
   padding-top: 2px;
   padding-bottom: constant(safe-area-inset-bottom);
   padding-bottom: env(safe-area-inset-bottom);
+  .iconfont {
+    font-size: .2rem;
+  }
 }
 </style>
