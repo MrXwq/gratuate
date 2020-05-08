@@ -7,36 +7,148 @@
       label-width="100px"
       class="demo-commodityForm"
     >
-      <el-form-item label="商品标题">
-        <el-input v-model="commodityForm.title"></el-input>
-      </el-form-item>
-      <el-form-item label="商品原价">
-        <el-input v-model="commodityForm.price"></el-input>
-      </el-form-item>
-      <el-form-item label="商品现价">
-        <el-input v-model="commodityForm.preferential"></el-input>
-      </el-form-item>
-      <el-form-item label="商品运费">
-        <el-input v-model="commodityForm.freight"></el-input>
-      </el-form-item>
-      <el-form-item label="寄出地">
-        <el-cascader
-          v-model="commodityForm.origin"
-          :options="origins"
-          :props="{ expandTrigger: 'hover' }"
-          @change="handleChange"
-        ></el-cascader>
-      </el-form-item>
-      <el-form-item label="分类">
-        <el-select v-model="commodityForm.categories" multiple>
-          <el-option
-            v-for="item in categories"
-            :key="item._id"
-            :label="item.name"
-            :value="item._id"
-          ></el-option>
-        </el-select>
-      </el-form-item>
+      <el-tabs value="basic" type="border-card">
+        <el-tab-pane label="基础信息" name="basic">
+          <el-form-item label="商品标题">
+            <el-input v-model="commodityForm.title"></el-input>
+          </el-form-item>
+          <el-form-item label="商品原价">
+            <el-input v-model="commodityForm.price"></el-input>
+          </el-form-item>
+          <el-form-item label="商品现价">
+            <el-input v-model="commodityForm.preferential"></el-input>
+          </el-form-item>
+          <el-form-item label="商品运费">
+            <el-input v-model="commodityForm.freight"></el-input>
+          </el-form-item>
+          <el-form-item label="寄出地">
+            <el-cascader
+              v-model="commodityForm.origin"
+              :options="origins"
+              :props="{ expandTrigger: 'hover' }"
+              @change="handleChange"
+            ></el-cascader>
+          </el-form-item>
+          <el-form-item label="分类">
+            <el-select v-model="commodityForm.categories" multiple>
+              <el-option
+                v-for="item in categories"
+                :key="item._id"
+                :label="item.name"
+                :value="item._id"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="颜色">
+            <el-select v-model="commodityForm.color" multiple>
+              <el-option
+                v-for="item in categories"
+                :key="item._id"
+                :label="item.name"
+                :value="item.name"
+              ></el-option>
+            </el-select>
+          </el-form-item>
+          <el-form-item label="上传轮播图">
+            <el-upload
+              class="carousel-uploader"
+              :action="uploadUrl"
+              :headers="getAuthHeaders()"
+              list-type="picture-card"
+              :show-file-list="false"
+              :on-success="addCarousel"
+            >
+              <i class="el-icon-plus"></i>
+            </el-upload>
+            <div class="carousel-imgs">
+              <img
+                v-for="(cimg, index) in commodityForm.carousel"
+                :key="index"
+                width="100%"
+                :src="cimg"
+                alt
+              />
+            </div>
+          </el-form-item>
+          <el-form-item label="上传详情页图">
+            <el-upload
+              class="detail-uploader"
+              :action="uploadUrl"
+              :headers="getAuthHeaders()"
+              list-type="picture-card"
+              :show-file-list="false"
+              :on-success="addDetail"
+            >
+              <i class="el-icon-plus"></i>
+            </el-upload>
+            <div class="detail-imgs">
+              <img
+                v-for="(dimg, index) in commodityForm.detail"
+                :key="index"
+                width="100%"
+                :src="dimg"
+                alt
+              />
+            </div>
+          </el-form-item>
+          <el-form-item label="列表页图">
+            <!-- 如果属性一开始没有值的时候，可能会导致赋值赋不上去，所以我们要用vue里面的显示赋值 -->
+            <el-upload
+              class="avatar-uploader"
+              :action="uploadUrl"
+              :headers="getAuthHeaders()"
+              :show-file-list="false"
+              :on-success="addListImg"
+            >
+              <img v-if="commodityForm.listImg" :src="commodityForm.listImg" class="avatar" />
+              <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+            </el-upload>
+          </el-form-item>
+        </el-tab-pane>
+        <el-tab-pane label="商品基础参数" name="param">
+          <el-button
+            @click="commodityForm.params.push({paramName: '', paramVal: ''})"
+            type="primary"
+          >
+            <i class="el-icon-circle-plus"></i>
+            添加商品基础参数
+          </el-button>
+          <el-row>
+            <el-col :md="12" v-for="(item,i) in commodityForm.params" :key="i">
+              <el-select v-model="commodityForm.params[i].paramName">
+                <el-option
+                  v-for="item in param"
+                  :key="item._id"
+                  :label="item.paramName"
+                  :value="item.paramName"
+                ></el-option>
+              </el-select>
+              <el-input v-model="commodityForm.params[i].paramVal"></el-input>
+            </el-col>
+          </el-row>
+        </el-tab-pane>
+        <el-tab-pane label="基础服务" name="service">
+          <el-button @click="commodityForm.service.push({})" type="primary">
+            <i class="el-icon-circle-plus"></i>
+            添加基础服务
+          </el-button>
+          <el-row>
+            <el-col :md="12" v-for="(s,i) in commodityForm.service" :key="i">
+              <el-select v-model="commodityForm.service[i].basis">
+                <el-option
+                  v-for="item in service"
+                  :key="item._id"
+                  :label="item.basis"
+                  :value="item.basis"
+                ></el-option>
+              </el-select>
+              <!-- <el-form-item label="基础服务名称">
+                <el-input type="text" v-model="s.basis"></el-input>
+              </el-form-item>-->
+            </el-col>
+          </el-row>
+        </el-tab-pane>
+      </el-tabs>
       <!-- <el-form-item label="支持基础服务">
         <el-input v-model="commodityForm.params"></el-input>
       </el-form-item>
@@ -98,7 +210,18 @@
 export default {
   data() {
     return {
-      commodityForm: {},
+      commodityForm: {
+        params: [
+          {
+            paramName: "",
+            paramVal: ""
+          }
+        ],
+        service: [],
+        carousel: [],
+        detail: [],
+        color: []
+      },
       rules: {
         name: [
           { required: true, message: "请输入活动名称", trigger: "blur" },
@@ -139,15 +262,44 @@ export default {
       origins: [], //地址信息
       originValue: "",
       categories: [], //分类
-      id: this.$route.params.id
+      id: this.$route.params.id,
+      param: [],
+      service: [],
+      dialogImageUrl: ""
     };
   },
   async created() {
-    this.id && this.fetchCommodityForm();
-    await this.getOrigins();
-    await this.fetchCategories();
+    this.id && (await this.fetchCommodityForm());
+    this.getOrigins();
+    this.fetchCategories();
+    this.fetchParam();
+    this.fetchService();
   },
   methods: {
+    addListImg(res) {
+      this.$set(this.commodityForm, 'listImg', res.url)
+    },
+    addDetail(res) {
+      this.commodityForm.detail.push(res.url);
+    },
+    addCarousel(res) {
+      this.commodityForm.carousel.push(res.url);
+      // console.log(res,this.commodityForm.carousel)
+      // carousel.push(res.url)
+    },
+    getAuthHeaders() {
+      return {
+        Authorization: `Bearer ${localStorage.token || ""}`
+      };
+    },
+    async fetchService() {
+      const res = await this.$http.get("api/service");
+      this.service = res.data;
+    },
+    async fetchParam() {
+      const res = await this.$http.get("api/param");
+      this.param = res.data;
+    },
     //   获取商品信息
     async fetchCommodityForm() {
       const res = await this.$http.get(`api/commodity/${this.id}`);
@@ -195,15 +347,91 @@ export default {
         type: "success",
         message: "添加成功"
       });
-      this.$router.push("/commodity");
+      this.$router.push("/commodity/list");
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
     }
+  },
+  computed: {
+    uploadUrl() {
+      return this.$http.defaults.baseURL + "/api/upload";
+    }
   }
 };
 </script>
+<style lang="scss">
+  .avatar-uploader .el-upload {
+    border: 1px dashed #d9d9d9;
+    border-radius: 6px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+  }
+  .avatar-uploader .el-upload:hover {
+    border-color: #409EFF;
+  }
+  .avatar-uploader-icon {
+    font-size: 28px;
+    color: #8c939d;
+    width: 5rem;
+    height: 5rem;
+    line-height: 5rem;
+    text-align: center;
+  }
+  .avatar {
+    width: 5rem;
+    height: 5rem;
+    display: block;
+  }
+</style>
 <style lang="scss" scoped>
 .commodity-create-box {
+  .demo-commodityForm {
+    .carousel-uploader {
+      // &::v-deep .el-upload-list__item {
+      //   width: 50px;
+      //   height: 50px;
+      // }
+      &::v-deep .el-upload--picture-card {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        .el-icon-plus {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+    .carousel-imgs {
+      display: flex;
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+    .detail-uploader {
+      &::v-deep .el-upload--picture-card {
+        position: relative;
+        width: 50px;
+        height: 50px;
+        .el-icon-plus {
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+    .detail-imgs {
+      display: flex;
+      img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
 }
 </style>

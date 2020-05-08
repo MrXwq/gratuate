@@ -2,7 +2,7 @@
   <div>
     <el-container style="height: 100vh; border: 1px solid #eee">
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu  router  :default-active = "$route.path">
+        <el-menu router :default-active="$route.path">
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-setting"></i>内容管理
@@ -11,11 +11,29 @@
               <template slot="title">商品</template>
               <el-menu-item index="/commodity/create">新建商品</el-menu-item>
               <el-menu-item index="/commodity/list">商品列表</el-menu-item>
+              <el-menu-item index="/param/create">新建商品参数</el-menu-item>
+              <el-menu-item index="/param/list">商品参数列表</el-menu-item>
+              <el-menu-item index="/service/create">新建服务</el-menu-item>
+              <el-menu-item index="/service/list">服务列表</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
               <template slot="title">运营</template>
               <el-menu-item index="/categories/create">新建分类</el-menu-item>
               <el-menu-item index="/categories/list">分类列表</el-menu-item>
+            </el-menu-item-group>
+            <!-- <el-menu-item-group>
+              <template slot="title">运营</template>
+              
+            </el-menu-item-group>-->
+          </el-submenu>
+          <el-submenu index="2">
+            <template slot="title">
+              <i class="el-icon-message"></i>运营管理
+            </template>
+            <el-menu-item-group>
+              <template slot="title">广告位</template>
+              <el-menu-item index="/ads/create">新建广告位</el-menu-item>
+              <el-menu-item index="/ads/list">广告位列表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
@@ -29,7 +47,9 @@
               <el-dropdown-item>查看</el-dropdown-item>
               <el-dropdown-item>新增</el-dropdown-item>
               <el-dropdown-item>删除</el-dropdown-item>
-              <el-dropdown-item><el-button type="primary">点击？</el-button></el-dropdown-item>
+              <el-dropdown-item>
+                <el-button type="primary">点击？</el-button>
+              </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
           <span>王小虎</span>
@@ -40,7 +60,7 @@
             <el-table-column prop="date" label="日期" width="140"></el-table-column>
             <el-table-column prop="name" label="姓名" width="120"></el-table-column>
             <el-table-column prop="address" label="地址"></el-table-column>
-          </el-table> -->
+          </el-table>-->
           <router-view :key="$route.path"></router-view>
         </el-main>
       </el-container>
@@ -50,7 +70,7 @@
     
 <script>
 export default {
-  name: 'HomePage',
+  name: "HomePage",
   data() {
     const item = {
       date: "2016-05-02",
@@ -67,9 +87,9 @@ export default {
   },
   methods: {
     async getUsers() {
-      const res = await this.$http.get('user/users')
+      const res = await this.$http.get("user/users");
       // console.log(res)
-      this.users = res.data
+      this.users = res.data;
     }
   }
 };

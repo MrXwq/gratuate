@@ -34,8 +34,18 @@ import {
   Option,
   Select,
   Cascader,
+  Tabs,
+  TabPane,
+  Row,
+  Upload,
+  Dialog
 } from "element-ui";
 
+Vue.use(Dialog);
+Vue.use(Upload);
+Vue.use(Row);
+Vue.use(Tabs);
+Vue.use(TabPane);
 Vue.use(Cascader);
 Vue.use(Container);
 Vue.use(Header);

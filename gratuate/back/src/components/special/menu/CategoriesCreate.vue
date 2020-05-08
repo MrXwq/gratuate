@@ -15,6 +15,9 @@
       <el-form-item label="分类">
         <el-input v-model="categoriesForm.name"></el-input>
       </el-form-item>
+      <el-form-item label="分类icon">
+        <el-input v-model="categoriesForm.icon"></el-input>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="submitForm('categoriesForm')">添加</el-button>
         <el-button @click="resetForm('categoriesForm')">重置</el-button>
