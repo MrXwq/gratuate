@@ -22,18 +22,32 @@ const CommoditySchema = new mongoose.Schema({
     },
     categories: {
         type: Array
+    },
+    params: [{
+        paramName: {
+            type: String
+        },
+        paramVal: {
+            type: String
+        }
+    }],
+    service: [{
+        basis: {
+            type: String
+        }
+    }],
+    carousel: {
+        type: Array
+    },
+    detail: {
+        type: Array
+    },
+    listImg: {
+        type: String
+    },
+    color: {
+        type: Array
     }
-    // params: [{
-    //     paramsName: {
-    //         type: String
-    //     },
-    //     paramsVal: {
-    //         type: String
-    //     }
-    // }],
-    // service: {
-    //     type: Array
-    // },
 })
 
 module.exports = mongoose.model('Commodity', CommoditySchema);

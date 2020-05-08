@@ -4,6 +4,10 @@ const app = express()
 app.use(require('cors')())
 app.use(express.json())
 
+// 应该被放到环境变量里面的
+app.set('secret','rewqreqwrsdaf')
+
+app.use('/uploads', express.static(__dirname + '/uploads'))
 app.use('/back', express.static(__dirname + '/back'))
 app.use('/', express.static(__dirname + '/before'))
 

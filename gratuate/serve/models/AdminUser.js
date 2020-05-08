@@ -11,9 +11,9 @@ const UserSchema = new mongoose.Schema({
       return require('bcrypt').hashSync(val,10)
     }//最存入的值做处理之后再存
   },
-  confirmPassword: {
-    type: String
-  }
+  // confirmPassword: {
+  //   type: String
+  // }
 })
 
 module.exports = mongoose.model('User', UserSchema);
