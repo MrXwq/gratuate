@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[16],{288:function(e,n,t){"use strict";function i(){var e=this,n=e.$createElement;return(e._self._c||n)("div",[e._v("\n    用户反馈\n")])}t.r(n),i._withStripped=!0;var s=t(7),c=Object(s.a)({},i,[],!1,null,null,null);c.options.__file="src/views/feedback.vue",n.default=c.exports}}]);
-//# sourceMappingURL=16.13816359.js.map
