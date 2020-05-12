@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomePage from '../views/HomePage.vue';
+import About from '../views/About.vue';
+import Login from '../views/login.vue';
 import http from '@/utils/http'
 Vue.prototype.$http = http
 
@@ -91,8 +93,37 @@ const routes = [
         name: 'AdsList',
         component: () => import("@/components/special/menu/AdsList.vue")
       },
-      
+      {
+        path: '/service/list',
+        name: 'ServiceList',
+        component: () => import("@/components/special/menu/ServiceList.vue")
+      },
+      {
+        path: '/user/create',
+        name: 'UserCreate',
+        component: () => import("@/components/special/menu/UserCreate.vue")
+      },
+      {
+        path: '/user/create/:id',
+        name: 'UserCreate',
+        component: () => import("@/components/special/menu/UserCreate.vue"),
+        props: true
+      },
+      {
+        path: '/user/list',
+        name: 'UserList',
+        component: () => import("@/components/special/menu/UserList.vue")
+      },
     ]
+  },
+  {
+    path: '/login',
+    name: 'login',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: Login,
+    meta: { isPublic: true }
   },
   {
     path: '/about',
@@ -100,12 +131,19 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: About
   }
 ]
 
 const router = new VueRouter({
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if(!to.meta.isPublic && !localStorage.token ){
+    return next('/login')
+  }
+  next()
 })
 
 export default router

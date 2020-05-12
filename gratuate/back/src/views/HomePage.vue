@@ -17,7 +17,7 @@
               <el-menu-item index="/service/list">服务列表</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
-              <template slot="title">运营</template>
+              <template slot="title">分类</template>
               <el-menu-item index="/categories/create">新建分类</el-menu-item>
               <el-menu-item index="/categories/list">分类列表</el-menu-item>
             </el-menu-item-group>
@@ -28,12 +28,22 @@
           </el-submenu>
           <el-submenu index="2">
             <template slot="title">
-              <i class="el-icon-message"></i>运营管理
+              <i class="el-icon-message"></i>商用
             </template>
             <el-menu-item-group>
               <template slot="title">广告位</template>
               <el-menu-item index="/ads/create">新建广告位</el-menu-item>
               <el-menu-item index="/ads/list">广告位列表</el-menu-item>
+            </el-menu-item-group>
+          </el-submenu>
+          <el-submenu index="3" v-if="authority == 'administrator'">
+            <template slot="title">
+              <i class="el-icon-message"></i>用户管理
+            </template>
+            <el-menu-item-group>
+              <template slot="title">用户</template>
+              <el-menu-item index="/user/create">新建用户</el-menu-item>
+              <el-menu-item index="/user/list">用户列表</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>
@@ -79,11 +89,13 @@ export default {
     };
     return {
       tableData: Array(20).fill(item),
-      users: []
+      users: [],
+      authority: ''
     };
   },
   created() {
     // this.getUsers()
+    this.authority = localStorage.authority
   },
   methods: {
     async getUsers() {

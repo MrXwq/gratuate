@@ -38,9 +38,11 @@ import {
   TabPane,
   Row,
   Upload,
-  Dialog
+  Dialog,
+  Card
 } from "element-ui";
 
+Vue.use(Card);
 Vue.use(Dialog);
 Vue.use(Upload);
 Vue.use(Row);
