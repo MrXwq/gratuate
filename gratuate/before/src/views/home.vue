@@ -51,21 +51,21 @@
       top: 0rem;
       z-index: 1000;
       width: 100%;
-      background-color: rgb(255, 133, 42);
+      background-color: rgb(216, 201, 215);
       .header-bd {
         width: 100%;
         padding-right: .09rem;
         padding-left: .42rem;
-        padding-top: .06rem;
-        padding-bottom: .06rem;
-        background-image: url("~@/assets/img/tao-font.png");
+        padding-top: .08rem;
+        padding-bottom: .08rem;
+        background-image: url("~@/assets/img/wolf.jpg");
         background-size: .27rem .2rem;
         background-repeat: no-repeat;
         background-position: .09rem center;
         .placeholder {
           display: block;
           font-size: 0rem;
-          background-color: rgb(255, 78, 34);
+          background-color: rgb(187, 145, 206);
           text-align: center;
           border-radius: .04rem;
           .iconchazhao {

@@ -5,8 +5,11 @@
         <img :src="item.commodity && item.commodity.listImg" alt />
       </div>
       <div class="commoditylist-item-right">
-        <div class="commoditylist-title">{{item.commodity && item.commodity.title}}</div>
-        <div class="commoditylist-item-pn">
+        <div class="commoditylist-title">
+          {{item.commodity && item.commodity.title}}
+          <van-button type="danger" @click="deleteCart(item)">删除</van-button>
+        </div>
+        <!-- <div class="commoditylist-item-pn">
           <div>
             <span>￥</span>
             <span
@@ -19,7 +22,8 @@
             <input class="purchase" type="text" v-model="item.purchaseNum" />
             <div @click="redAdd(item, 'add')" class="add purchase-button">+</div>
           </div>
-        </div>
+        </div> -->
+        <DetailFooter :item="item"></DetailFooter>
       </div>
     </div>
     <footer>
@@ -42,7 +46,7 @@
   </div>
 </template>
 <script>
-import { Card, SwipeCell, Button } from "vant";
+import { Card, SwipeCell, Button, Toast } from "vant";
 export default {
   data() {
     return {
@@ -54,24 +58,23 @@ export default {
     this.getCommoditylist(this.id);
   },
   methods: {
+    deleteCart(item) {
+      this.$http.delete(`/api/cart/${item._id}`)
+      this.getCommoditylist(this.id);
+      Toast('删除成功')
+    },
     // 删除购物车，添加到订单
     async settlement() {
-      await this.$http.post('/api/order/list', this.commodity) 
-      await this.$http.delete('/api/cart')
+      await this.$http.post("/api/order/list", this.commodity);
+      await this.$http.delete("/api/cart");
       this.$router.push({
-        path: '/order'
-      })
+        path: "/order"
+      });
     },
     putCommodity(item) {
       this.$http.put(`/api/cart/${item._id}`, item);
     },
-    redAdd(item, type) {
-      if (type === "add") {
-        item.purchaseNum++;
-      } else if (item.purchaseNum != 1) {
-        item.purchaseNum--;
-      }
-    },
+    
     beforeClose({ position, instance }) {
       console.log(instance, position);
       instance.close();
@@ -105,6 +108,7 @@ export default {
   },
   components: {
     CardList: () => import("@/components/common/CardList.vue"),
+    DetailFooter: () => import("@/components/special/DetailFooter.vue"),
     [Card.name]: Card,
     [SwipeCell.name]: SwipeCell,
     [Button.name]: Button
@@ -172,7 +176,7 @@ export default {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: .2rem;
+    margin-bottom: 0.2rem;
     .settlement {
       padding: 0 0.3rem;
       margin-top: 30px;

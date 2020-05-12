@@ -1,7 +1,7 @@
 <template>
   <div class="commodity-detail">
     <div class="swiper-box">
-      <Swiper :swiperParams="swiperParams" :swiperArr="swiperArr"></Swiper>
+      <Swiper :swiperParams="swiperParams" :swiperArr="commodityDetail.carousel"></Swiper>
       <i class="iconfont iconfanhui" @click="goBack()"></i>
     </div>
     <div class="title-box">
@@ -102,7 +102,7 @@
     <div class="footer-box">
       <div class="cart">
         <i class="iconfont icongouwuche"></i>
-        <div class="cart-text">购物车</div>
+        <div class="cart-text" @click="goCart">购物车</div>
       </div>
       <div class="collect">
         <van-icon name="star-o" color="#999" />
@@ -152,28 +152,28 @@ export default {
         autoplay: false, //是否自动轮播
         prevNextButton: false //左右按钮是否展示
       },
-      swiperArr: [
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i1/2675669696/O1CN01YKLlof2LUopbI1RmM_!!2675669696.jpg_640x640q80_.webp"
-        },
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i4/2675669696/O1CN01zMM5Vl2LUomTvM4mo_!!2675669696.jpg_640x640q80_.webp"
-        },
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i3/2675669696/O1CN012LUoi20KG2deA9H_!!2675669696.jpg_640x640q80_.webp"
-        },
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i3/2675669696/TB2aCZ3cNGYBuNjy0FnXXX5lpXa_!!2675669696.jpg_640x640q80_.webp"
-        },
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i3/2675669696/TB2z2TFvg0kpuFjSspdXXX4YXXa_!!2675669696.jpg_640x640q80_.webp"
-        }
-      ],
+      // swiperArr: [
+      //   {
+      //     imgSrc:
+      //       "https://img.alicdn.com/imgextra/i1/2675669696/O1CN01YKLlof2LUopbI1RmM_!!2675669696.jpg_640x640q80_.webp"
+      //   },
+      //   {
+      //     imgSrc:
+      //       "https://img.alicdn.com/imgextra/i4/2675669696/O1CN01zMM5Vl2LUomTvM4mo_!!2675669696.jpg_640x640q80_.webp"
+      //   },
+      //   {
+      //     imgSrc:
+      //       "https://img.alicdn.com/imgextra/i3/2675669696/O1CN012LUoi20KG2deA9H_!!2675669696.jpg_640x640q80_.webp"
+      //   },
+      //   {
+      //     imgSrc:
+      //       "https://img.alicdn.com/imgextra/i3/2675669696/TB2aCZ3cNGYBuNjy0FnXXX5lpXa_!!2675669696.jpg_640x640q80_.webp"
+      //   },
+      //   {
+      //     imgSrc:
+      //       "https://img.alicdn.com/imgextra/i3/2675669696/TB2z2TFvg0kpuFjSspdXXX4YXXa_!!2675669696.jpg_640x640q80_.webp"
+      //   }
+      // ],
       detailImgs: [
         {
           imgSrc:
@@ -221,6 +221,7 @@ export default {
         }
       ],
       commodityDetail: {
+        carousel: []
         // price: 399,
         // preferential: 299,
         // title: "汉尼斯床头柜",
@@ -360,6 +361,12 @@ export default {
     this.orderParams.color = this.commodityDetail.color[this.current];
   },
   methods: {
+    // 跳转到购物车
+    goCart() {
+      this.$router.push({
+        path: '/cart'
+      })
+    },
     postColor(color, index) {
       this.current = index;
       this.orderParams.color = color;

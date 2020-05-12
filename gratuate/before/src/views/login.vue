@@ -25,7 +25,7 @@ export default {
     async login() {
       const res = await this.$http.post("/user/user", this.model);
       localStorage.token = res.data.token;
-      this.$router.push("/");
+      this.$router.push("/home");
       Toast("登录成功");
     }
   }

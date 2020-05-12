@@ -2,7 +2,7 @@
   <div class="swiper-box">
     <swiper class="swiper" :options="swiperOption">
       <swiper-slide v-for="(item, index) in swiperArr" :key="index">
-        <img :src="item.imgSrc" class="swiper-img" alt="轮播图" />
+        <img :src="item.imgSrc ? item.imgSrc : item" class="swiper-img" alt="轮播图" />
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
       <div

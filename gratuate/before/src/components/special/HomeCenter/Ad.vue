@@ -7,7 +7,7 @@
         <div class="ad-title">{{item.title}}</div>
       </div>
     </div> -->
-    <van-notice-bar text="通知内容" left-icon="volume-o" />
+    <van-notice-bar :text="ads[0].title" left-icon="volume-o" />
   </div>
 </template>
 <script>
@@ -39,6 +39,15 @@ export default {
       ]
     };
   },
+  created() {
+    this.getAd()
+  },
+  methods: {
+    async getAd() {
+      let res = await this.$http.get('/api/ad');
+      this.ads = res.data
+    }
+  },
   components: {
     [NoticeBar.name]: NoticeBar
   }
@@ -60,6 +69,9 @@ export default {
   }
   .van-notice-bar {
     font-size: .13rem;
+  }
+  &::v-deep .van-notice-bar__wrap {
+    height: .16rem; 
   }
   // .ad-right {
   //   font-size: 30px;
