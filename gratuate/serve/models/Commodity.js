@@ -48,6 +48,8 @@ const CommoditySchema = new mongoose.Schema({
     color: {
         type: Array
     }
-})
+},{
+    timestamps: true
+  })
 
 module.exports = mongoose.model('Commodity', CommoditySchema);

@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[16],{284:function(e,n,t){"use strict";function i(){var e=this,n=e.$createElement;return(e._self._c||n)("div",[e._v("\n  我的淘宝\n")])}t.r(n),i._withStripped=!0;var s=t(9),l=Object(s.a)({},i,[],!1,null,null,null);l.options.__file="src/views/my.vue",n.default=l.exports}}]);
-//# sourceMappingURL=16.f784407b.js.map

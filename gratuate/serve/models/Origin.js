@@ -8,6 +8,8 @@ const OriginSchema = new mongoose.Schema({
         type: Array
     }
         
-})
+},{
+    timestamps: true
+  })
 
 module.exports = mongoose.model('Origin', OriginSchema);
