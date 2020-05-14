@@ -8,15 +8,15 @@
       </div>
       <span class="line"></span>
     </div>
-    <div class="item-box" v-for="(item, index) in detailImgs" :key="index">
-      <img class="item-img" :src="item.imgSrc" alt="详情图片" />
+    <div class="item-box" v-for="(item, index) in detail" :key="index">
+      <img class="item-img" :src="item" alt="详情图片" />
     </div>
   </div>
 </template>
 <script>
 export default {
   props: {
-    detailImgs: {
+    detail: {
       type: Array,
       default: () => []
     }

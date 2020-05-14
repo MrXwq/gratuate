@@ -23,7 +23,7 @@
     <van-cell is-link @click="showPopup" value="付款后3天内发货·15天退货·1..." title="服务"></van-cell>
     <!-- <van-cell is-link @click="specificationPopup" value="请选择 安装方式 颜色方式" title="规格"></van-cell> -->
     <van-cell is-link @click="paramsPopup" value="品牌 型号..." title="参数"></van-cell>
-    <DetailImg :detailImgs="detailImgs" />
+    <DetailImg :detail="commodityDetail.detail" />
     <van-popup v-model="serviceShow" round position="bottom" :style="{ 'max-height': '80%' }">
       <div class="service-title">基础服务</div>
       <div class="service-item-box">
@@ -174,54 +174,55 @@ export default {
       //       "https://img.alicdn.com/imgextra/i3/2675669696/TB2z2TFvg0kpuFjSspdXXX4YXXa_!!2675669696.jpg_640x640q80_.webp"
       //   }
       // ],
-      detailImgs: [
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i3/2675669696/O1CN01VfHN4H2LUojckpx0Q_!!2675669696.jpg_640x0q80_.webp"
-        },
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i4/2675669696/TB2BCTeXHnA11Bjy0FjXXapoFXa_!!2675669696.jpg_640x0q80_.webp"
-        },
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i4/2675669696/TB2dq6fXHbC11BjSszbXXXRbpXa_!!2675669696.jpg_640x0q80_.webp"
-        },
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i4/2675669696/TB2dq6fXHbC11BjSszbXXXRbpXa_!!2675669696.jpg_640x0q80_.webp"
-        },
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i4/2675669696/TB2dq6fXHbC11BjSszbXXXRbpXa_!!2675669696.jpg_640x0q80_.webp"
-        },
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i3/2675669696/TB2QOLgXIHA11Bjy0FiXXckfVXa_!!2675669696.jpg_640x0q80_.webp"
-        },
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i4/2675669696/TB2PQjhXKvB11BjSspnXXbE.pXa_!!2675669696.jpg_640x0q80_.webp"
-        },
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i3/2675669696/TB22CHeXRjC11BjSszdXXbGFpXa_!!2675669696.jpg_640x0q80_.webp"
-        },
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i4/2675669696/TB2ihPfXOYC11Bjy1zbXXbYLFXa_!!2675669696.jpg_640x0q80_.webp"
-        },
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i4/2675669696/TB2ju2kXLTz11Bjy1XcXXapnpXa_!!2675669696.jpg_640x0q80_.webp"
-        },
-        {
-          imgSrc:
-            "https://img.alicdn.com/imgextra/i2/2675669696/TB2oDzfXJYA11Bjy0FhXXbIwVXa_!!2675669696.jpg_640x0q80_.webp"
-        }
+      detail: [
+        // {
+        //   imgSrc:
+        //     "https://img.alicdn.com/imgextra/i3/2675669696/O1CN01VfHN4H2LUojckpx0Q_!!2675669696.jpg_640x0q80_.webp"
+        // },
+        // {
+        //   imgSrc:
+        //     "https://img.alicdn.com/imgextra/i4/2675669696/TB2BCTeXHnA11Bjy0FjXXapoFXa_!!2675669696.jpg_640x0q80_.webp"
+        // },
+        // {
+        //   imgSrc:
+        //     "https://img.alicdn.com/imgextra/i4/2675669696/TB2dq6fXHbC11BjSszbXXXRbpXa_!!2675669696.jpg_640x0q80_.webp"
+        // },
+        // {
+        //   imgSrc:
+        //     "https://img.alicdn.com/imgextra/i4/2675669696/TB2dq6fXHbC11BjSszbXXXRbpXa_!!2675669696.jpg_640x0q80_.webp"
+        // },
+        // {
+        //   imgSrc:
+        //     "https://img.alicdn.com/imgextra/i4/2675669696/TB2dq6fXHbC11BjSszbXXXRbpXa_!!2675669696.jpg_640x0q80_.webp"
+        // },
+        // {
+        //   imgSrc:
+        //     "https://img.alicdn.com/imgextra/i3/2675669696/TB2QOLgXIHA11Bjy0FiXXckfVXa_!!2675669696.jpg_640x0q80_.webp"
+        // },
+        // {
+        //   imgSrc:
+        //     "https://img.alicdn.com/imgextra/i4/2675669696/TB2PQjhXKvB11BjSspnXXbE.pXa_!!2675669696.jpg_640x0q80_.webp"
+        // },
+        // {
+        //   imgSrc:
+        //     "https://img.alicdn.com/imgextra/i3/2675669696/TB22CHeXRjC11BjSszdXXbGFpXa_!!2675669696.jpg_640x0q80_.webp"
+        // },
+        // {
+        //   imgSrc:
+        //     "https://img.alicdn.com/imgextra/i4/2675669696/TB2ihPfXOYC11Bjy1zbXXbYLFXa_!!2675669696.jpg_640x0q80_.webp"
+        // },
+        // {
+        //   imgSrc:
+        //     "https://img.alicdn.com/imgextra/i4/2675669696/TB2ju2kXLTz11Bjy1XcXXapnpXa_!!2675669696.jpg_640x0q80_.webp"
+        // },
+        // {
+        //   imgSrc:
+        //     "https://img.alicdn.com/imgextra/i2/2675669696/TB2oDzfXJYA11Bjy0FhXXbIwVXa_!!2675669696.jpg_640x0q80_.webp"
+        // }
       ],
       commodityDetail: {
-        carousel: []
+        carousel: [],
+        detail: []
         // price: 399,
         // preferential: 299,
         // title: "汉尼斯床头柜",
