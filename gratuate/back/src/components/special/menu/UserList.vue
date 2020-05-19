@@ -31,7 +31,7 @@ export default {
       this.users = res.data;
     },
     async remove(row) {
-      this.$confirm(`是否删除该分类,${row.name}`, "提示", {
+      this.$confirm(`是否删除该用户名,${row.username}`, "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"

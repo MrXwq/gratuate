@@ -29,7 +29,7 @@ export default {
       this.ad = res.data;
     },
     async remove(row) {
-      this.$confirm(`是否删除该服务,${row.name}`, "提示", {
+      this.$confirm(`是否删除该广告,${row.title}`, "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"

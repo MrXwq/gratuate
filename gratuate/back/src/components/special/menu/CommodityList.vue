@@ -38,7 +38,7 @@ export default {
       this.commodities = res.data;
     },
     async remove(row) {
-      this.$confirm(`是否删除该英雄,${row.name}`, "提示", {
+      this.$confirm(`是否删除该商品,${row.title}`, "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
